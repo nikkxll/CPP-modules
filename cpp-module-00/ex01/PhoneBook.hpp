@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 11:57:03 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/05/20 14:47:12 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/05/20 21:08:57 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,19 @@
 
 class	PhoneBook {
 	public:
-		PhoneBook() : count(0), nextIndex(0) {}
+		PhoneBook() : _count(0), _nextIndex(0) {}
 
 		void	start();
 		
 	private:
 		Contact	contacts[MAX_CONTACTS];
-		int		count;
-		int		nextIndex;
+		int		_count;
+		int		_nextIndex;
 		
 		void	addContact();
 		void	searchContacts() const;
-		void	printMessage(std::string message, std::string color) const;
+		void	printMessage(std::string message) const;
+		void	printErrorMessage(std::string message) const;
 };
 
 #endif

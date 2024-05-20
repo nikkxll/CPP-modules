@@ -6,14 +6,18 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 11:56:54 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/05/20 14:42:02 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/05/20 21:10:14 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-void	PhoneBook::printMessage(std::string message, std::string color) const {
-	std::cout << color << message << EC << std::endl;
+void	PhoneBook::printErrorMessage(std::string message) const {
+	std::cerr << RED << message << EC << std::endl;
+}
+
+void	PhoneBook::printMessage(std::string message) const {
+	std::cout << GREEN << message << EC << std::endl;
 }
 
 void	PhoneBook::addContact() {
@@ -33,21 +37,21 @@ void	PhoneBook::addContact() {
 	if (firstName.empty() || lastName.empty() || nickname.empty() ||
 		phoneNumber.empty() || darkestSecret.empty())
 	{
-		this->printMessage("All fields must be filled. Contact not added.", RED);
+		this->printErrorMessage("All fields must be filled. Contact not added.");
 		return;
 	}
 
-	contacts[nextIndex].setDetails(firstName, lastName, nickname, phoneNumber, darkestSecret);
-	nextIndex = (nextIndex + 1) % MAX_CONTACTS;
-	if (count < MAX_CONTACTS)
-		count++;
-	this->printMessage("Added!", GREEN);
+	contacts[_nextIndex].setDetails(firstName, lastName, nickname, phoneNumber, darkestSecret);
+	_nextIndex = (_nextIndex + 1) % MAX_CONTACTS;
+	if (_count < MAX_CONTACTS)
+		_count++;
+	this->printMessage("Added!");
 }
 
 void	PhoneBook::searchContacts() const {
-	if (count == 0)
+	if (_count == 0)
 	{
-		this->printMessage("The phonebook is empty.", RED);
+		this->printErrorMessage("The phonebook is empty.");
 		return;
 	}
 
@@ -56,7 +60,7 @@ void	PhoneBook::searchContacts() const {
 				<< std::setw(10) << "Last Name" << "|"
 				<< std::setw(10) << "Nickname" << "|" << std::endl;
 
-	for (int i = 0; i < count; ++i)
+	for (int i = 0; i < _count; ++i)
 		contacts[i].displaySummary(i);
 
 	int index;
@@ -66,12 +70,12 @@ void	PhoneBook::searchContacts() const {
 	{
 		std::cin.clear();
 		std::cin.ignore(INT_MAX, '\n');
-		this->printMessage("Input is in a wrong format.", RED);
+		this->printErrorMessage("Input is in a wrong format.");
 		return;
 	}
 
-	if (index < 0 || index >= count)
-		this->printMessage("Invalid index.", RED);
+	if (index < 0 || index >= _count)
+		this->printErrorMessage("Invalid index.");
 	else
 		contacts[index].displayDetails();
 	std::cin.ignore(INT_MAX, '\n');
@@ -90,10 +94,10 @@ void	PhoneBook::start() {
 			this->searchContacts();
 		else if (command == "EXIT")
 		{
-			this->printMessage("See you!", GREEN);
+			this->printMessage("See you!");
 			break;
 		}
 		else
-			this->printMessage("Invalid command.", RED);
+			this->printErrorMessage("Invalid command.");
 	}
 }
