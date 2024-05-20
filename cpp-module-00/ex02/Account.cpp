@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 15:59:05 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/05/20 19:53:17 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/05/20 23:52:01 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,24 +80,44 @@ void	Account::displayAccountsInfos(void)
 
 void	Account::makeDeposit(int deposit)
 {
-	(void)deposit;
 	_displayTimestamp();
-	std::cout << "makeDeposit dummy" << std::endl;
+	std::cout << "index:" << _accountIndex << ";";
+	std::cout << "p_amount:" << _amount << ";";
+	std::cout << "deposit:" << deposit << ";";
+	_amount += deposit;
+	_totalAmount += deposit;
+	_nbDeposits++;
+	_totalNbDeposits++;
+	std::cout << "amount:" << _amount << ";";
+	std::cout << "nb_deposits:" << _nbDeposits << std::endl;
 }
 
 bool	Account::makeWithdrawal(int withdrawal)
 {
-	(void)withdrawal;
 	_displayTimestamp();
-	std::cout << "makeWithdrawal dummy" << std::endl;
-	return (true);
+	std::cout << "index:" << _accountIndex << ";";
+	std::cout << "p_amount:" << _amount << ";";
+	if (checkAmount() - withdrawal >= 0)
+	{
+		_amount -= withdrawal;
+		_totalAmount -= withdrawal;
+		_nbWithdrawals++;
+		_totalNbWithdrawals++;
+		std::cout << "withdrawal:" << withdrawal << ";";
+		std::cout << "amount:" << _amount << ";";
+		std::cout << "nb_withdrawals:" << _nbWithdrawals << std::endl;
+	}
+	else
+	{
+		std::cout << "withdrawal:refused" << std::endl;
+		return false;
+	}
+	return true;
 }
 
 int	Account::checkAmount(void) const
 {
-	_displayTimestamp();
-	std::cout << "checkAmount dummy" << std::endl;
-	return (0);
+	return _amount;
 }
 
 void	Account::displayStatus(void) const
