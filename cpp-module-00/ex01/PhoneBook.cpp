@@ -6,21 +6,28 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 11:56:54 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/05/20 21:10:14 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/05/21 13:57:32 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-void	PhoneBook::printErrorMessage(std::string message) const {
-	std::cerr << RED << message << EC << std::endl;
+PhoneBook::PhoneBook() : _count(0), _nextIndex(0)
+{	
 }
 
-void	PhoneBook::printMessage(std::string message) const {
+void	PhoneBook::printErrorMessage(std::string message) const
+{
+	std::cout << RED << message << EC << std::endl;
+}
+
+void	PhoneBook::printMessage(std::string message) const
+{
 	std::cout << GREEN << message << EC << std::endl;
 }
 
-void	PhoneBook::addContact() {
+void	PhoneBook::addContact()
+{
 	std::string firstName, lastName, nickname, phoneNumber, darkestSecret;
 
 	std::cout << "Enter First Name: ";
@@ -48,7 +55,8 @@ void	PhoneBook::addContact() {
 	this->printMessage("Added!");
 }
 
-void	PhoneBook::searchContacts() const {
+void	PhoneBook::searchContacts() const
+{
 	if (_count == 0)
 	{
 		this->printErrorMessage("The phonebook is empty.");
@@ -66,7 +74,7 @@ void	PhoneBook::searchContacts() const {
 	int index;
 	std::cout << "Enter the index of the contact to display: ";
 	std::cin >> index;
-	if(std::cin.fail())
+	if (std::cin.fail() || std::cin.eof())
 	{
 		std::cin.clear();
 		std::cin.ignore(INT_MAX, '\n');
@@ -81,13 +89,16 @@ void	PhoneBook::searchContacts() const {
 	std::cin.ignore(INT_MAX, '\n');
 }
 
-void	PhoneBook::start() {
+void	PhoneBook::start()
+{
 	std::string command;
 
 	while (true)
 	{
 		std::cout << "Enter command (ADD, SEARCH, EXIT): ";
 		std::getline(std::cin, command);
+		if (std::cin.eof())
+			return ;
 		if (command == "ADD")
 			this->addContact();
 		else if (command == "SEARCH")

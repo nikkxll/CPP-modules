@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/21 10:27:16 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/05/21 15:07:27 by dnikifor         ###   ########.fr       */
+/*   Created: 2024/05/22 16:41:54 by dnikifor          #+#    #+#             */
+/*   Updated: 2024/05/22 17:13:19 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_H
-# define ZOMBIE_H
+#ifndef HARL_HPP
+# define HARL_HPP
 
-# include <string>
 # include <iostream>
+# include <string>
 
-class Zombie {
+# define N_MSG 4
+
+class Harl {
 	private:
-		std::string	name;
+		void debug(void);
+		void info(void);
+		void warning(void);
+		void error(void);
 		
 	public:
-		Zombie(std::string name);
-		~Zombie();
-		
-		void announce(void);
+		Harl();
+		void complain(std::string level);
 };
 
 #endif

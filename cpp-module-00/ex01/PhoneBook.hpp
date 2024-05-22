@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 11:57:03 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/05/20 21:08:57 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/05/21 13:19:09 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@
 
 class	PhoneBook {
 	public:
-		PhoneBook() : _count(0), _nextIndex(0) {}
-
+		PhoneBook();
 		void	start();
 		
 	private:

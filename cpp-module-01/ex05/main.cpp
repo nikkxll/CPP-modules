@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/21 10:27:16 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/05/21 15:07:27 by dnikifor         ###   ########.fr       */
+/*   Created: 2024/05/22 16:39:59 by dnikifor          #+#    #+#             */
+/*   Updated: 2024/05/22 17:43:55 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_H
-# define ZOMBIE_H
+#include "Harl.hpp"
 
-# include <string>
-# include <iostream>
+void testing(std::string level)
+{
+	Harl harl;
+	
+	std::cout << level << ":" << std::endl;
+	harl.complain(level);
+}
 
-class Zombie {
-	private:
-		std::string	name;
-		
-	public:
-		Zombie(std::string name);
-		~Zombie();
-		
-		void announce(void);
-};
-
-#endif
+int main(void)
+{
+	testing("DEBUG");
+	testing("INFO");
+	testing("WARNING");
+	testing("ERROR");
+	testing("DEBUG");
+	testing("WARNING");
+	testing("WRONG_INPUT");
+	
+	return EXIT_SUCCESS;
+}

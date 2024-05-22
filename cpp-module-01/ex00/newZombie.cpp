@@ -1,30 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   newZombie.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/21 10:27:16 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/05/21 15:07:27 by dnikifor         ###   ########.fr       */
+/*   Created: 2024/05/21 13:08:11 by dnikifor          #+#    #+#             */
+/*   Updated: 2024/05/21 13:21:19 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_H
-# define ZOMBIE_H
+#include "Zombie.hpp"
 
-# include <string>
-# include <iostream>
-
-class Zombie {
-	private:
-		std::string	name;
-		
-	public:
-		Zombie(std::string name);
-		~Zombie();
-		
-		void announce(void);
-};
-
-#endif
+Zombie* newZombie(std::string name)
+{
+	return new Zombie(name);
+}
