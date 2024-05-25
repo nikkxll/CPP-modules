@@ -6,11 +6,13 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 11:01:34 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/05/24 15:29:20 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/05/25 23:26:51 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+
+const int Fixed::fractBitsNum = 8;
 
 Fixed::Fixed() : value(0)
 {
@@ -53,22 +55,26 @@ Fixed::~Fixed()
 
 int Fixed::getRawBits(void) const
 {
-	std::cout << "getRawBits member function called" << std::endl;
 	return this->value;
 }
 
 void Fixed::setRawBits(int const raw)
 {
-	std::cout << "setRawBits member function called" << std::endl;
 	value = raw;
 }
 
 float Fixed::toFloat(void) const
 {
-	
+	return (static_cast<float>(getRawBits()) / static_cast<float>(1 << fractBitsNum));
 }
 
 int Fixed::toInt(void) const
 {
-	
+	return (getRawBits() >> fractBitsNum);
+}
+
+std::ostream &operator<<(std::ostream &o, const Fixed &fixed)
+{
+	o << fixed.toFloat();
+	return o;
 }

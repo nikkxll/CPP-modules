@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 11:01:31 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/05/24 14:37:19 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/05/25 23:26:18 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 class Fixed {
 	private:
 		int	value;
-		static const int fractBitsNum = 8;
+		static const int fractBitsNum;
 	public:
 		Fixed();
 		Fixed(const Fixed &other);
