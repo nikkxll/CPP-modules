@@ -2,7 +2,7 @@
 
 NAME	:= fixed
 CC		:= c++
-FLAGS	:= -Wall -Wextra -Werror -std=c++17
+FLAGS	:= -Wall -Wextra -Werror -std=c++17 -g
 
 SRCS	:= main.cpp Fixed.cpp
 OBJ_DIR	:= objs/
