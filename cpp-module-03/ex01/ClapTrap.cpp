@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 13:23:16 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/05/27 16:45:55 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/05/27 22:17:49 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 ClapTrap::ClapTrap() : hitPoints(10), energyPoints(10), attackDamage(0),
 	name("unknown")
 {
-	std::cout << "Default constructor called" << std::endl;
+	std::cout << "ClapTrap default constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const std::string& name): hitPoints(10), energyPoints(10),
 	attackDamage(0), name(name)
 {
-	std::cout << "Constructor overload called" << std::endl;
+	std::cout << "ClapTrap constructor overload called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& other)
@@ -30,7 +30,7 @@ ClapTrap::ClapTrap(const ClapTrap& other)
 	energyPoints = other.energyPoints;
 	attackDamage = other.attackDamage;
 	name = other.name;
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "ClapTrap copy constructor called" << std::endl;
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& other)
@@ -42,13 +42,13 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& other)
 		attackDamage = other.attackDamage;
 		name = other.name;
 	}
-	std::cout << "Copy assignment operator called" << std::endl;
+	std::cout << "ClapTrap copy assignment operator called" << std::endl;
 	return *this;
 }
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "ClapTrap destructor called" << std::endl;
 }
 
 void ClapTrap::attack(const std::string& target)

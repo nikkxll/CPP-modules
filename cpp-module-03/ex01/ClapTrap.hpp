@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 13:23:15 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/05/27 16:46:00 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/05/27 22:12:02 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <string>
 
 class ClapTrap {
-	private:
+	protected:
 		unsigned int hitPoints;
 		unsigned int energyPoints;
 		unsigned int attackDamage;
@@ -28,8 +28,8 @@ class ClapTrap {
 		ClapTrap(const std::string& name);
 		ClapTrap(const ClapTrap &other);
 		ClapTrap& operator=(const ClapTrap& other);
-		~ClapTrap();
-		void attack(const std::string& target);
+		virtual ~ClapTrap();
+		virtual void attack(const std::string& target);
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
 		void display(std::ostream& stream) const;

@@ -1,10 +1,10 @@
 # cpp makefile
 
-NAME	:= claptrap
+NAME	:= scavtrap
 CC		:= c++
 FLAGS	:= -Wall -Wextra -Werror -std=c++17
 
-SRCS	:= main.cpp ClapTrap.cpp
+SRCS	:= main.cpp ClapTrap.cpp ScavTrap.cpp
 OBJ_DIR	:= objs/
 OBJS	:= $(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))
 
