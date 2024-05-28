@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Point.hpp                                          :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/26 20:30:25 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/05/28 13:01:06 by dnikifor         ###   ########.fr       */
+/*   Created: 2024/05/27 16:54:10 by dnikifor          #+#    #+#             */
+/*   Updated: 2024/05/27 22:33:08 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef POINT_HPP
-# define POINT_HPP
+#ifndef SCAVTRAP_HPP
+# define SCAVTRAP_HPP
 
-# include "Fixed.hpp"
+# include "ClapTrap.hpp"
 
-class Point
-{
+class ScavTrap: public ClapTrap {
 	private:
-		const Fixed x;
-		const Fixed y;
-
+		bool _gateKeeperMode;
+		
 	public:
-		Point();
-		Point(const float x, const float y);
-		Point(const Point& other);
-		Point& operator=(const Point& other);
-		~Point();
+		ScavTrap();
+		ScavTrap(const ScavTrap &other);
+		ScavTrap(const std::string& name);
+		ScavTrap &operator=(const ScavTrap &src);
+		virtual ~ScavTrap();
 
-		Fixed getX() const;
-		Fixed getY() const;
+		virtual void attack(const std::string& target) override;
+		void guardGate();
 };
 
 #endif

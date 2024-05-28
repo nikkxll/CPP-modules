@@ -1,8 +1,8 @@
 # cpp makefile
 
 NAME	:= fixed
-CC		:= c++
-FLAGS	:= -Wall -Wextra -Werror -std=c++17 -g
+CPP		:= c++
+FLAGS	:= -Wall -Wextra -Werror -std=c++17
 
 SRCS	:= main.cpp Fixed.cpp
 OBJ_DIR	:= objs/
@@ -15,14 +15,14 @@ EC		:=	\033[0m
 all: $(NAME)
 
 $(NAME): $(OBJ_DIR) $(OBJS)
-	@$(CC) $(FLAGS) $(OBJS) -o $(NAME)
+	@$(CPP) $(FLAGS) $(OBJS) -o $(NAME)
 	@echo "$(GREEN)$(NAME) created$(EC)"
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
 $(OBJ_DIR)%.o: %.cpp
-	@$(CC) $(FLAGS) -c $< -o $@
+	@$(CPP) $(FLAGS) -c $< -o $@
 
 clean:
 	@rm -rf $(OBJ_DIR)

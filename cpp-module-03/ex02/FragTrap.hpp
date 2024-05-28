@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Point.hpp                                          :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/26 20:30:25 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/05/28 13:01:06 by dnikifor         ###   ########.fr       */
+/*   Created: 2024/05/28 11:07:34 by dnikifor          #+#    #+#             */
+/*   Updated: 2024/05/28 11:16:35 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef POINT_HPP
-# define POINT_HPP
+#ifndef FRAGTRAP_HPP
+# define FRAGTRAP_HPP
 
-# include "Fixed.hpp"
+# include "ClapTrap.hpp"
 
-class Point
-{
+class FragTrap: public ClapTrap {
 	private:
-		const Fixed x;
-		const Fixed y;
-
+		
 	public:
-		Point();
-		Point(const float x, const float y);
-		Point(const Point& other);
-		Point& operator=(const Point& other);
-		~Point();
+		FragTrap();
+		FragTrap(const FragTrap &other);
+		FragTrap(const std::string& name);
+		FragTrap &operator=(const FragTrap &src);
+		virtual ~FragTrap();
 
-		Fixed getX() const;
-		Fixed getY() const;
+		void highFivesGuys();
 };
 
 #endif

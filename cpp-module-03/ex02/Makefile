@@ -1,10 +1,10 @@
 # cpp makefile
 
-NAME	:= bsp
-CPP		:= c++
+NAME	:= fragtrap
+CC		:= c++
 FLAGS	:= -Wall -Wextra -Werror -std=c++17
 
-SRCS	:= main.cpp Fixed.cpp Point.cpp bsp.cpp
+SRCS	:= main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 OBJ_DIR	:= objs/
 OBJS	:= $(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))
 
@@ -15,14 +15,14 @@ EC		:=	\033[0m
 all: $(NAME)
 
 $(NAME): $(OBJ_DIR) $(OBJS)
-	@$(CPP) $(FLAGS) $(OBJS) -o $(NAME)
+	@$(CC) $(FLAGS) $(OBJS) -o $(NAME)
 	@echo "$(GREEN)$(NAME) created$(EC)"
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
 $(OBJ_DIR)%.o: %.cpp
-	@$(CPP) $(FLAGS) -c $< -o $@
+	@$(CC) $(FLAGS) -c $< -o $@
 
 clean:
 	@rm -rf $(OBJ_DIR)
