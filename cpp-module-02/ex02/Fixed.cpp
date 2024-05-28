@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 11:01:34 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/05/26 20:26:27 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/05/28 18:36:52 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ bool Fixed::operator==(const Fixed& rhs)
 
 bool Fixed::operator!=(const Fixed& rhs)
 {
-	return (this->value == rhs.value);
+	return (this->value != rhs.value);
 }
 
 Fixed Fixed::operator+(const Fixed& other)
