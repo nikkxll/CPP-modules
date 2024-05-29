@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 13:22:33 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/05/28 11:20:10 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/05/29 18:00:41 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int main()
 	b.takeDamage(40);
 	c.takeDamage(20);
 	b.guardGate();
+	c.highFivesGuys();
 	std::cout << std::endl;	
 	std::cout << a << std::endl;
 	std::cout << b << std::endl;

@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 11:07:32 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/05/28 11:13:34 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/05/29 18:01:24 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,5 @@ FragTrap::~FragTrap()
 
 void FragTrap::highFivesGuys(void)
 {
-	std::cout << "High Five y'all!" << std::endl;
+	std::cout << this->name << " saying: High Five y'all!" << std::endl;
 }
