@@ -27,7 +27,7 @@ $(OBJ_DIR)%.o: %.cpp
 clean:
 	@rm -rf $(OBJ_DIR)
 	@echo "$(RED)Object files removed$(EC)"
-w
+
 fclean: clean
 	@rm -rf $(NAME)
 	@echo "$(RED)Full clean up completed$(EC)"
