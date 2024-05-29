@@ -6,15 +6,14 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 13:23:15 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/05/27 16:46:00 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/05/29 13:18:28 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLAPTRAP_HPP
-# define CLAPTRAP_HPP
+#pragma once
 
-# include <iostream>
-# include <string>
+#include <iostream>
+#include <string>
 
 class ClapTrap {
 	private:
@@ -36,5 +35,3 @@ class ClapTrap {
 };
 
 std::ostream&	operator<<(std::ostream& stream, ClapTrap const& clap);
-
-#endif

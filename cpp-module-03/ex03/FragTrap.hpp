@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 11:07:34 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/05/29 13:19:09 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/05/29 13:19:38 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 #include "ClapTrap.hpp"
 
-class FragTrap: public ClapTrap {
-	private:
-		
+class FragTrap: virtual public ClapTrap {
 	public:
 		FragTrap();
 		FragTrap(const FragTrap &other);

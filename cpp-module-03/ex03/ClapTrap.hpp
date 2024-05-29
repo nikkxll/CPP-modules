@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 13:23:15 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/05/29 13:19:03 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/05/29 13:19:24 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ class ClapTrap {
 		virtual void attack(const std::string& target);
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
-		void display(std::ostream& stream) const;
+		virtual void display(std::ostream& stream) const;
 };
 
 std::ostream&	operator<<(std::ostream& stream, ClapTrap const& clap);

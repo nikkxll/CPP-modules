@@ -6,14 +6,13 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 16:54:10 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/05/27 22:33:08 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/05/29 13:19:15 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-# define SCAVTRAP_HPP
+#pragma once
 
-# include "ClapTrap.hpp"
+#include "ClapTrap.hpp"
 
 class ScavTrap: public ClapTrap {
 	private:
@@ -29,5 +28,3 @@ class ScavTrap: public ClapTrap {
 		virtual void attack(const std::string& target) override;
 		void guardGate();
 };
-
-#endif

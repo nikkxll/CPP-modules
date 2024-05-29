@@ -1,37 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
+/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/27 13:23:15 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/05/29 13:19:03 by dnikifor         ###   ########.fr       */
+/*   Created: 2024/05/29 10:56:50 by dnikifor          #+#    #+#             */
+/*   Updated: 2024/05/29 13:19:31 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include <iostream>
-#include <string>
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
-class ClapTrap {
+class DiamondTrap: public ScavTrap, public FragTrap {
 	protected:
-		unsigned int hitPoints;
-		unsigned int energyPoints;
-		unsigned int attackDamage;
 		std::string name;
-
+		
 	public:
-		ClapTrap();
-		ClapTrap(const std::string& name);
-		ClapTrap(const ClapTrap &other);
-		ClapTrap& operator=(const ClapTrap& other);
-		virtual ~ClapTrap();
-		virtual void attack(const std::string& target);
-		void takeDamage(unsigned int amount);
-		void beRepaired(unsigned int amount);
+		DiamondTrap();
+		DiamondTrap(const std::string);
+		DiamondTrap(const DiamondTrap& other);
+		DiamondTrap& operator=(const DiamondTrap& other);
+		virtual ~DiamondTrap();
+
+		void attack(const std::string& target);
+		void whoAmI();
 		void display(std::ostream& stream) const;
 };
 
-std::ostream&	operator<<(std::ostream& stream, ClapTrap const& clap);
+std::ostream& operator<<(std::ostream& stream, DiamondTrap const& clap);
