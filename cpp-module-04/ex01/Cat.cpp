@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 14:34:00 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/05/29 18:13:17 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/05/30 14:00:51 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Cat::Cat() : Animal()
 	this->brain = new Brain();
 	if (!this->brain)
 	{
-		std::cout << "Cat Brain allocation failed in copy constructor" << std::endl;
+		std::cout << "Cat Brain allocation failed in default constructor" << std::endl;
 		exit(1);
 	}
 	std::cout << "Cat default constructor called" << std::endl;
@@ -63,4 +63,22 @@ Cat::~Cat()
 void Cat::makeSound() const
 {
 	std::cout << this->type << ": ***meow, meow***" << std::endl;
+}
+
+const std::string* Cat::getIdeas() const
+{
+	return this->brain->getIdeas();
+}
+
+std::string Cat::getIdea(int pos) const
+{
+	return (pos >= 0 && pos < IDEAS_SIZE) ? this->brain->getIdea(pos) : "";
+}
+
+void Cat::setIdea(int pos, std::string idea)
+{
+	if (pos >= 0 && pos < IDEAS_SIZE)
+	{
+		this->brain->setIdea(pos, idea);
+	}
 }

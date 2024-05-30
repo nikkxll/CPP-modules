@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 14:10:39 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/05/29 16:13:13 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/05/30 14:15:20 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,7 @@ class Animal {
 
 		std::string getType() const;
 		virtual void makeSound() const;
+		virtual const std::string* getIdeas() const = 0;
+		virtual std::string getIdea(int pos) const = 0;
+		virtual void setIdea(int pos, std::string idea) = 0;
 };

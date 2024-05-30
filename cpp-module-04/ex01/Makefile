@@ -4,7 +4,7 @@ NAME	:= animals
 CC		:= c++
 FLAGS	:= -Wall -Wextra -Werror -std=c++17
 
-SRCS	:= main.cpp Cat.cpp Dog.cpp Animal.cpp WrongCat.cpp WrongAnimal.cpp
+SRCS	:= main.cpp Cat.cpp Dog.cpp Animal.cpp WrongCat.cpp WrongAnimal.cpp Brain.cpp
 OBJ_DIR	:= objs/
 OBJS	:= $(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))
 

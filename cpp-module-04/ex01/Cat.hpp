@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 14:33:58 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/05/29 17:35:05 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/05/30 14:16:51 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,7 @@ class Cat: public Animal {
 		virtual ~Cat();
 
 		virtual void makeSound() const override;
+		const std::string* getIdeas() const override;
+		std::string getIdea(int pos) const override;
+		void setIdea(int pos, std::string idea) override;
 };

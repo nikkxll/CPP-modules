@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 16:48:25 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/05/29 17:44:53 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/05/30 14:50:16 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,8 @@ class Brain {
 		Brain(const Brain& other);
 		Brain& operator=(const Brain& other);
 		~Brain();
+
+		const std::string* getIdeas() const;
+		std::string getIdea(int pos) const;
+		void setIdea(int pos, std::string idea);
 };
