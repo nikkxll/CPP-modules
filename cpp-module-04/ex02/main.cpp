@@ -6,11 +6,11 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 14:36:35 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/05/31 11:25:18 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/05/31 11:57:46 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
 #include "WrongAnimal.hpp"
@@ -19,10 +19,13 @@
 
 int main()
 {
+	// will throw an error if uncomment it
+	// const AAnimal* err = new AAnimal();
+	
 	{
 		std::cout << "\033[33m" << "exercise example\n"<< "\033[0m";
-		const Animal* j = new Dog();
-		const Animal* i = new Cat();
+		const AAnimal* j = new Dog();
+		const AAnimal* i = new Cat();
 		
 		std::cout << std::endl;
 
@@ -31,7 +34,7 @@ int main()
 		std::cout << std::endl;
 	}
 	{
-		Animal* animal_arr[4];
+		AAnimal* animal_arr[4];
 		
 		for (int i = 0; i < 4; ++i)
 		{
@@ -104,7 +107,7 @@ int main()
 
 		std::cout << std::endl;
 
-		for (Animal* animal : animal_arr)
+		for (AAnimal* animal : animal_arr)
 			delete animal;
 
 		std::cout << std::endl;

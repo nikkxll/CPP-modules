@@ -6,13 +6,13 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 14:21:07 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/05/31 11:25:48 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/05/31 11:42:44 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 
-Dog::Dog() : Animal()
+Dog::Dog() : AAnimal()
 {
 	this->brain = new Brain();
 	if (!this->brain)
@@ -24,7 +24,7 @@ Dog::Dog() : Animal()
 	std::cout << "Dog default constructor called" << std::endl;
 }
 
-Dog::Dog(const Dog& other) : Animal()
+Dog::Dog(const Dog& other) : AAnimal()
 {
 	this->type = other.type;
 	this->brain = new Brain();

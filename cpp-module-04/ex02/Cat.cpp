@@ -1,75 +1,75 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/29 14:21:07 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/05/31 11:25:48 by dnikifor         ###   ########.fr       */
+/*   Created: 2024/05/29 14:34:00 by dnikifor          #+#    #+#             */
+/*   Updated: 2024/05/31 11:42:13 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#include "Cat.hpp"
 
-Dog::Dog() : Animal()
+Cat::Cat() : AAnimal()
 {
+	this->type = "Cat";
 	this->brain = new Brain();
 	if (!this->brain)
 	{
-		std::cout << "Dog Brain allocation failed in default constructor" << std::endl;
+		std::cout << "Cat Brain allocation failed in default constructor" << std::endl;
 		exit(1);
 	}
-	this->type = "Dog";
-	std::cout << "Dog default constructor called" << std::endl;
+	std::cout << "Cat default constructor called" << std::endl;
 }
 
-Dog::Dog(const Dog& other) : Animal()
+Cat::Cat(const Cat& other) : AAnimal()
 {
 	this->type = other.type;
 	this->brain = new Brain();
 	if (!this->brain)
 	{
-		std::cout << "Dog Brain allocation failed in copy constructor" << std::endl;
+		std::cout << "Cat Brain allocation failed in copy constructor" << std::endl;
 		exit(1);
 	}
 	*this->brain = *other.brain;
-	std::cout << "Dog copy constructor called" << std::endl;
+	std::cout << "Cat copy constructor called" << std::endl;
 }
 
-Dog& Dog::operator=(const Dog& other)
+Cat& Cat::operator=(const Cat& other)
 {
 	if (this != &other)
 	{
 		this->type = other.type;
 		*this->brain = *other.brain;
 	}
-	std::cout << "Dog copy assignment operator called" << std::endl;
+	std::cout << "Cat copy assignment operator called" << std::endl;
 	return *this;
 }
 
-Dog::~Dog()
+Cat::~Cat()
 {
 	delete this->brain;
-	std::cout << "Dog destructor called" << std::endl;
+	std::cout << "Cat destructor called" << std::endl;
 }
 
-void Dog::makeSound() const
+void Cat::makeSound() const
 {
-	std::cout << this->type << ": ***woof, woof***" << std::endl;
+	std::cout << this->type << ": ***meow, meow***" << std::endl;
 }
 
-const std::string* Dog::getIdeas() const
+const std::string* Cat::getIdeas() const
 {
 	return this->brain->getIdeas();
 }
 
-std::string Dog::getIdea(int pos) const
+std::string Cat::getIdea(int pos) const
 {
 	return (pos >= 0 && pos < IDEAS_SIZE) ? this->brain->getIdea(pos) : "";
 }
 
-void Dog::setIdea(int pos, std::string idea)
+void Cat::setIdea(int pos, std::string idea)
 {
 	if (pos >= 0 && pos < IDEAS_SIZE)
 	{
