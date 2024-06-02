@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 14:34:00 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/05/31 11:42:13 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/06/02 13:20:07 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,19 @@ Cat& Cat::operator=(const Cat& other)
 {
 	if (this != &other)
 	{
-		this->type = other.type;
-		*this->brain = *other.brain;
+        if (this->brain != nullptr)
+        {
+            *this->brain = *other.brain;
+        }
+        else
+        {
+            this->brain = new Brain(*other.brain);
+			if (!this->brain)
+			{
+				std::cout << "Cat Brain allocation failed in copy assignment operator" << std::endl;
+				exit(1);
+			}
+        }
 	}
 	std::cout << "Cat copy assignment operator called" << std::endl;
 	return *this;

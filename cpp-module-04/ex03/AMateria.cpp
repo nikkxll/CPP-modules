@@ -6,46 +6,45 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 11:44:37 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/05/31 13:48:56 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/06/02 23:42:03 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
 
-AMateria::AMateria() : type("unknown")
+AMateria::AMateria() : _type("unknown")
 {
-	std::cout << "AMateria default constructor called" << std::endl;
+	// std::cout << "AMateria default constructor called" << std::endl;
 }
 
-AMateria::AMateria(std::string const& type) : type(type)
+AMateria::AMateria(std::string const& type) : _type(type)
 {
-	std::cout << "AMateria default constructor called" << std::endl;
+	// std::cout << "AMateria overload constructor called" << std::endl;
 }
 
-AMateria::AMateria(const AMateria& other)
-{
-	std::cout << "AMateria copy constructor called" << std::endl;
+AMateria::AMateria(const AMateria& other) : _type(other._type)
+{	
+	// std::cout << "AMateria copy constructor called" << std::endl;
 }
 
 AMateria& AMateria::operator=(const AMateria& other)
 {
-	if (this != &other)
-	{
-	}
-	std::cout << "AMateria copy assignment operator called" << std::endl;
+	if (this != &other) {}
+	// std::cout << "AMateria copy assignment operator called" << std::endl;
 	return *this;
 }
 
 AMateria::~AMateria()
 {
-	std::cout << "AMateria default destructor called" << std::endl;
+	// std::cout << "AMateria default destructor called" << std::endl;
 }
 
 std::string const & AMateria::getType() const
 {
-	return this->type;
+	return this->_type;
 }
 
 void AMateria::use(ICharacter& target)
 {
+	std::cout << "AMateria " << getType() << " used on " << target.getName() << std::endl;
 }

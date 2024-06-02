@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 12:08:50 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/05/31 14:00:51 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/06/02 23:49:10 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,24 @@
 
 Ice::Ice() : AMateria("ice")
 {
-	std::cout << "Ice default constructor called" << std::endl;
+	// std::cout << "Ice default constructor called" << std::endl;
 }
 
-Ice::Ice(std::string const& type) : AMateria(type)
+Ice::Ice(const Ice& other) : AMateria(other)
 {
-	std::cout << "Ice default constructor called" << std::endl;
-}
-
-Ice::Ice(const Ice& other)
-{
-	std::cout << "Ice copy constructor called" << std::endl;
+	// std::cout << "Ice copy constructor called" << std::endl;
 }
 
 Ice& Ice::operator=(const Ice& other)
 {
-	if (this != &other)
-	{
-	}
-	std::cout << "Ice copy assignment operator called" << std::endl;
+	if (this != &other) {}
+	// std::cout << "Ice copy assignment operator called" << std::endl;
 	return *this;
 }
 
 Ice::~Ice()
 {
-	std::cout << "Ice default destructor called" << std::endl;
+	// std::cout << "Ice default destructor called" << std::endl;
 }
 
 AMateria* Ice::clone() const
