@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 16:05:44 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/05/29 16:13:38 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/06/03 16:35:30 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,5 @@ class WrongAnimal {
 		virtual ~WrongAnimal();
 
 		std::string getType() const;
-		virtual void makeSound() const;
+		void makeSound() const;
 };

@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 16:07:59 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/05/29 16:13:41 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/06/03 16:35:36 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@ class WrongCat: public WrongAnimal {
 		WrongCat& operator=(const WrongCat& other);
 		virtual ~WrongCat();
 
-		virtual void makeSound() const override;
+		void makeSound() const;
 };
