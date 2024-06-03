@@ -2,7 +2,7 @@
 
 NAME	:= materias
 CC		:= c++
-FLAGS	:= -Wall -Wextra -Werror -std=c++17 -g
+FLAGS	:= -Wall -Wextra -Werror -std=c++17
 
 SRCS	:= main.cpp MateriaSource.cpp Ice.cpp Cure.cpp Character.cpp AMateria.cpp
 OBJ_DIR	:= objs/

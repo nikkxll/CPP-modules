@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 14:27:52 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/06/02 23:54:37 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/06/03 16:24:00 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,16 @@
 #include "AMateria.hpp"
 
 class MateriaSource : public IMateriaSource {
-    private:
-        static const int _maxMaterias = 4;
-        AMateria* _learnedMaterias[_maxMaterias];
+	private:
+		static const int _maxMaterias = 4;
+		AMateria* _learnedMaterias[_maxMaterias];
 
-    public:
-        MateriaSource();
+	public:
+		MateriaSource();
 		~MateriaSource() override;
 		MateriaSource(const MateriaSource &);
 		MateriaSource& operator=(const MateriaSource&);
 		
-        void learnMateria(AMateria*) override;
-        AMateria* createMateria(std::string const & type) override;
+		void learnMateria(AMateria*) override;
+		AMateria* createMateria(std::string const & type) override;
 };
