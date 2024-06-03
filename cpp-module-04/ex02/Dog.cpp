@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 14:21:07 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/06/02 13:20:10 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/06/03 16:43:43 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,19 @@ Dog& Dog::operator=(const Dog& other)
 {
 	if (this != &other)
 	{
-        if (this->brain != nullptr)
-        {
-            *this->brain = *other.brain;
-        }
-        else
-        {
-            this->brain = new Brain(*other.brain);
+		if (this->brain != nullptr)
+		{
+			*this->brain = *other.brain;
+		}
+		else
+		{
+			this->brain = new Brain(*other.brain);
 			if (!this->brain)
 			{
 				std::cout << "Dog Brain allocation failed in copy assignment operator" << std::endl;
 				exit(1);
 			}
-        }
+		}
 	}
 	std::cout << "Dog copy assignment operator called" << std::endl;
 	return *this;

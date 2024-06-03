@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 14:21:07 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/05/29 16:32:59 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/06/03 16:43:58 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ Dog::Dog(const Dog& other) : Animal()
 {
 	this->type = other.type;
 	std::cout << "Dog copy constructor called" << std::endl;
-}ww
+}
 
 Dog& Dog::operator=(const Dog& other)
 {

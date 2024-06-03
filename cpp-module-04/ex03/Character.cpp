@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 16:32:21 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/06/03 00:39:03 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/06/03 16:44:27 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,28 @@
 
 Character::Character() : _name("unknown")
 {
-    for (int i = 0; i < _size; ++i)
-        _slot[i] = nullptr;
-    for (int i = 0; i < _unequippedSize; ++i)
-        _unequipped[i] = nullptr;
+	for (int i = 0; i < _size; ++i)
+		_slot[i] = nullptr;
+	for (int i = 0; i < _unequippedSize; ++i)
+		_unequipped[i] = nullptr;
 	// std::cout << "Character default constructor called" << std::endl;
 }
 
 Character::Character(std::string const& name) : _name(name)
 {
-    for (int i = 0; i < _size; ++i)
-        _slot[i] = nullptr;
-    for (int i = 0; i < _unequippedSize; ++i)
-        _unequipped[i] = nullptr;
+	for (int i = 0; i < _size; ++i)
+		_slot[i] = nullptr;
+	for (int i = 0; i < _unequippedSize; ++i)
+		_unequipped[i] = nullptr;
 	// std::cout << "Character overload constructor called" << std::endl;
 }
 
 Character::Character(const Character& other) : _name(other._name + "_copy")
 {
-    for (int i = 0; i < _size; ++i)
-        _slot[i] = other._slot[i] ? other._slot[i]->clone() : nullptr;
-    for (int i = 0; i < _unequippedSize; ++i)
-        _unequipped[i] = nullptr;
+	for (int i = 0; i < _size; ++i)
+		_slot[i] = other._slot[i] ? other._slot[i]->clone() : nullptr;
+	for (int i = 0; i < _unequippedSize; ++i)
+		_unequipped[i] = nullptr;
 	// std::cout << "Character copy constructor called" << std::endl;
 }
 
@@ -47,7 +47,7 @@ Character& Character::operator=(const Character& other)
 		{
 			delete this->_slot[i];
 			this->_slot[i] = nullptr;
-        	_slot[i] = other._slot[i] ? other._slot[i]->clone() : nullptr;
+			_slot[i] = other._slot[i] ? other._slot[i]->clone() : nullptr;
 		}
 	}
 	std::cout << "Character copy assignment operator called" << std::endl;
