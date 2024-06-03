@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 16:32:19 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/06/03 11:12:43 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/06/03 00:17:04 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class Character: public ICharacter {
 		static const int _size = 4;
 		static const int _unequippedSize = 1000;
 		AMateria* _slot[_size];
-		std::unique_ptr<AMateria*[]> _unequipped;
+		AMateria* _unequipped[_unequippedSize];
 
 	public:
 		Character();

@@ -6,32 +6,36 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 16:32:21 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/06/03 11:14:03 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/06/03 00:39:03 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Character.hpp"
 
-Character::Character() : _name("unknown"), _unequipped(new AMateria*[_unequippedSize]())
+Character::Character() : _name("unknown")
 {
     for (int i = 0; i < _size; ++i)
         _slot[i] = nullptr;
+    for (int i = 0; i < _unequippedSize; ++i)
+        _unequipped[i] = nullptr;
 	// std::cout << "Character default constructor called" << std::endl;
 }
 
-Character::Character(std::string const& name) : _name(name),
-	_unequipped(new AMateria*[_unequippedSize]())
+Character::Character(std::string const& name) : _name(name)
 {
     for (int i = 0; i < _size; ++i)
         _slot[i] = nullptr;
+    for (int i = 0; i < _unequippedSize; ++i)
+        _unequipped[i] = nullptr;
 	// std::cout << "Character overload constructor called" << std::endl;
 }
 
-Character::Character(const Character& other) : _name(other._name + "_copy"), 
-	_unequipped(new AMateria*[_unequippedSize]())
+Character::Character(const Character& other) : _name(other._name + "_copy")
 {
     for (int i = 0; i < _size; ++i)
         _slot[i] = other._slot[i] ? other._slot[i]->clone() : nullptr;
+    for (int i = 0; i < _unequippedSize; ++i)
+        _unequipped[i] = nullptr;
 	// std::cout << "Character copy constructor called" << std::endl;
 }
 
@@ -55,6 +59,10 @@ Character::~Character()
 	for (int i = 0; i < _size; ++i)
 	{
 		delete this->_slot[i];
+	}
+	for (int i = 0; i < _unequippedSize; ++i)
+	{
+		delete this->_unequipped[i];
 	}
 	// std::cout << "Character default destructor called" << std::endl;
 }
