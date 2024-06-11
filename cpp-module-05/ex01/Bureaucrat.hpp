@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 13:12:30 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/06/11 21:56:49 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/06/11 22:11:34 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 #include <string>
 #include <iostream>
+
+#include "Form.hpp"
+
+class Form;
 
 class Bureaucrat {
 	private:
@@ -32,6 +36,7 @@ class Bureaucrat {
 		size_t getGrade();
 		void incrGrade();
 		void decrGrade();
+		void signForm(Form& form);
 
 		class GradeTooHighException : public std::exception {
 			public:
