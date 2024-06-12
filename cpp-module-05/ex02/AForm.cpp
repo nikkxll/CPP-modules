@@ -1,38 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 22:01:26 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/06/12 13:42:29 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/06/12 18:36:52 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "AForm.hpp"
 
-Form::Form() : _name("unknown"), _signed(false), _signGrade(150), _execGrade(150) {
+AForm::AForm() : _name("unknown"), _signed(false), _signGrade(150), _execGrade(150) {
 	// log("Default constructor called");
 }
 
-Form::Form(const std::string name, bool isSigned, size_t signGrade, size_t execGrade)
+AForm::AForm(const std::string name, bool isSigned, size_t signGrade, size_t execGrade)
 	: _name(name), _signed(isSigned), _signGrade(signGrade), _execGrade(execGrade) {
 	if (signGrade < 1 || execGrade < 1) {
-		throw Form::GradeTooHighException();
+		throw AForm::GradeTooHighException();
 	}
 	if (signGrade > 150 || execGrade > 150) {
-		throw Form::GradeTooLowException();
+		throw AForm::GradeTooLowException();
 	}
 	// log("Overloaded constructor called");
 }
 
-Form::Form(const Form& other)
+AForm::AForm(const AForm& other)
 	: _name(other._name), _signed(other._signed), _signGrade(other._signGrade), _execGrade(other._execGrade) {
 	// log("Copy constructor called");
 }
 
-Form& Form::operator=(const Form& other) {
+AForm& AForm::operator=(const AForm& other) {
 	// log("Copy assignment operator called");
 	if (this != &other) {
 		this->_signed = other._signed;
@@ -42,11 +42,11 @@ Form& Form::operator=(const Form& other) {
 	return *this;
 }
 
-Form::~Form() {
+AForm::~AForm() {
 	// log("Destructor called");
 }
 
-void Form::beSigned(Bureaucrat& bureaucrat) {
+void AForm::beSigned(Bureaucrat& bureaucrat) {
 	if (bureaucrat.getGrade() > this->getSignGrade()) {
 		throw Bureaucrat::GradeTooLowException();
 	}
@@ -59,31 +59,49 @@ void Form::beSigned(Bureaucrat& bureaucrat) {
 	}
 }
 
-const std::string Form::getName() {
+const std::string AForm::getName() const {
 	return this->_name;
 }
 
-bool Form::getSignStatus() {
+bool AForm::getSignStatus() const {
 	return this->_signed;
 }
 
-size_t Form::getSignGrade() {
+size_t AForm::getSignGrade() const {
 	return this->_signGrade;
 }
 
-size_t Form::getExecGrade() {
+size_t AForm::getExecGrade() const {
 	return this->_execGrade;
 }
 
-const char* Form::GradeTooHighException::what() const noexcept {
+bool AForm::checkRequirments(const Bureaucrat& bureaucrat) const {
+	if (bureaucrat.getGrade() > this->getExecGrade())
+	{
+		throw Bureaucrat::GradeTooLowException();
+		return false;
+	}
+	else if (this->getSignStatus() == false)
+	{
+		throw AForm::NotSignedFormException();
+		return false;
+	}
+	return true;
+}
+
+const char* AForm::GradeTooHighException::what() const noexcept {
 	return "Grade is too high for the form!";
 }
 
-const char* Form::GradeTooLowException::what() const noexcept {
+const char* AForm::GradeTooLowException::what() const noexcept {
 	return "Grade is too low for the form!";
 }
 
-std::ostream& operator<<(std::ostream& stream, Form& form) {
+const char* AForm::NotSignedFormException::what() const noexcept {
+	return "Form is not signed yet!";
+}
+
+std::ostream& operator<<(std::ostream& stream, AForm& form) {
 	stream << form.getName() << ", form signed grade " << form.getSignGrade() << ", form exec grade ";
 	stream << form.getExecGrade() << ". Is form signed: " << form.getSignStatus() << std::endl;
 	return (stream);

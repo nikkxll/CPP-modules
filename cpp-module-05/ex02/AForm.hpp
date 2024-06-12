@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 22:01:24 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/06/12 13:25:13 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/06/12 18:36:45 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 class Bureaucrat;
 
-class Form {
+class AForm {
 	private:
 		const std::string _name;
 		bool _signed;
@@ -27,17 +27,20 @@ class Form {
 		size_t _execGrade;
 
 	public:
-		Form();
-		Form(const std::string, bool, size_t, size_t);
-		Form(const Form&);
-		Form& operator=(const Form&);
-		~Form();
+		AForm();
+		AForm(const std::string, bool, size_t, size_t);
+		AForm(const AForm&);
+		AForm& operator=(const AForm&);
+		virtual ~AForm() = 0;
 
 		void beSigned(Bureaucrat& bureaucrat);
-		const std::string getName();
-		bool getSignStatus();
-		size_t getSignGrade();
-		size_t getExecGrade();
+		const std::string getName() const;
+		bool getSignStatus() const;
+		size_t getSignGrade() const;
+		size_t getExecGrade() const;
+		bool checkRequirments(const Bureaucrat& bureaucrat) const;
+
+		virtual void execute(Bureaucrat const& executor) const = 0;
 
 		class GradeTooHighException : public std::exception {
 			public:
@@ -47,6 +50,10 @@ class Form {
 		public:
 			const char* what() const noexcept override;
 		};
+		class NotSignedFormException : public std::exception {
+		public:
+			const char* what() const noexcept override;
+		};
 };
 
-std::ostream& operator<<(std::ostream& stream, Form& form);
+std::ostream& operator<<(std::ostream& stream, AForm& form);

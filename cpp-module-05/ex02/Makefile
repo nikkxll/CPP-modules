@@ -4,7 +4,7 @@ NAME	:= bureaucrat
 CC		:= c++
 FLAGS	:= -Wall -Wextra -Werror -std=c++17
 
-SRCS	:= main.cpp Bureaucrat.cpp Form.cpp
+SRCS	:= main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 OBJ_DIR	:= objs/
 OBJS	:= $(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))
 
@@ -30,6 +30,7 @@ clean:
 
 fclean: clean
 	@rm -rf $(NAME)
+	@rm -rf home_shrubbery
 	@echo "$(RED)Full clean up completed$(EC)"
 
 re: fclean all

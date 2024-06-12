@@ -6,11 +6,12 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 13:12:27 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/06/12 11:58:31 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/06/12 20:07:49 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "AForm.hpp"
 
 Bureaucrat::Bureaucrat() : _name("unknown"), _grade(150) {
 	// log("Default constructor called");
@@ -18,10 +19,10 @@ Bureaucrat::Bureaucrat() : _name("unknown"), _grade(150) {
 
 Bureaucrat::Bureaucrat(const std::string name, size_t grade) : _name(name) {
 	if (grade < 1) {
-		throw GradeTooHighException();
+		throw Bureaucrat::GradeTooHighException();
 	}
 	if (grade > 150) {
-		throw GradeTooLowException();
+		throw Bureaucrat::GradeTooLowException();
 	}
 	this->_grade = grade;
 	// log("Overloaded constructor called");
@@ -43,17 +44,17 @@ Bureaucrat::~Bureaucrat() {
 	// log("Destructor called");
 }
 
-const std::string Bureaucrat::getName() {
+const std::string Bureaucrat::getName() const {
 	return this->_name;
 }
 
-size_t Bureaucrat::getGrade() {
+size_t Bureaucrat::getGrade() const {
 	return this->_grade;
 }
 
 void Bureaucrat::incrGrade() {
 	if (_grade == 1) {
-		throw GradeTooHighException();
+		throw Bureaucrat::GradeTooHighException();
 	}
 	_grade -= 1;
 	log("Increased grade for " + getName() + " to " + std::to_string(getGrade()));
@@ -61,21 +62,40 @@ void Bureaucrat::incrGrade() {
 
 void Bureaucrat::decrGrade() {
 	if (_grade == 150) {
-		throw GradeTooLowException();
+		throw Bureaucrat::GradeTooLowException();
 	}
 	_grade += 1;
 	log("Decreased grade for " + getName() + " to " + std::to_string(getGrade()));
 }
 
+void Bureaucrat::signForm(AForm& form) {
+	try {
+		form.beSigned(*this);
+	}
+	catch (const Bureaucrat::GradeTooLowException& e) {
+		std::cout << this->getName() << " couldn`t sign " << form.getName() << " because " << e.what() << std::endl;
+	}
+}
+
+void Bureaucrat::executeForm(AForm const& form) {
+	try {
+		std::cout << this->getName() << " executed " << form.getName() << std::endl;
+		form.execute(*this);
+	}
+	catch (const Bureaucrat::GradeTooLowException& e) {
+		std::cout << this->getName() << " couldn`t execute " << form.getName() << " because " << e.what() << std::endl;
+	}
+}
+
 const char* Bureaucrat::GradeTooHighException::what() const noexcept {
-	return "Grade is too high!";
+	return "Grade is too high for the bureaucrat!";
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const noexcept {
-	return "Grade is too low!";
+	return "Grade is too low for the bureaucrat!";
 }
 
-void Bureaucrat::log(const std::string& message) const {
+void log(const std::string& message) {
 	std::cout << message << std::endl;
 }
 
