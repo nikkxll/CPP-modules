@@ -1,6 +1,6 @@
 # cpp makefile
 
-NAME	:= bureaucrat
+NAME	:= forms
 CC		:= c++
 FLAGS	:= -Wall -Wextra -Werror -std=c++17
 
