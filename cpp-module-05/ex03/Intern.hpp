@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 23:24:59 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/06/13 00:03:11 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/06/13 16:25:13 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,14 @@
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 
-using Form = AForm;
-
 class Intern {
 	private:
+		std::string formNames[3];
+		AForm* (*formCreators[3])(const std::string& target);
+
+		static AForm* createPresidentialPardonForm(const std::string& target);
+		static AForm* createRobotomyRequestForm(const std::string& target);
+		static AForm* createShrubberyCreationForm(const std::string& target);
 
 	public:
 		Intern();
@@ -29,5 +33,5 @@ class Intern {
 		Intern& operator=(const Intern&);
 		~Intern();
 
-        Form* makeForm(const std::string name, const std::string target);
+		AForm* makeForm(const std::string name, const std::string target);
 };

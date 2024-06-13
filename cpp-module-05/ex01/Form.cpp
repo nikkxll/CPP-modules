@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 22:01:26 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/06/12 13:42:29 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/06/13 17:10:29 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ Form& Form::operator=(const Form& other) {
 	// log("Copy assignment operator called");
 	if (this != &other) {
 		this->_signed = other._signed;
-		this->_signGrade = other._signGrade;
-		this->_execGrade = other._execGrade;
 	}
 	return *this;
 }

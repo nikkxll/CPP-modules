@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/12 18:57:07 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/06/13 17:05:57 by dnikifor         ###   ########.fr       */
+/*   Created: 2024/06/12 19:51:51 by dnikifor          #+#    #+#             */
+/*   Updated: 2024/06/13 17:08:35 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,17 @@
 #include "AForm.hpp"
 
 #include <iostream>
-#include <cstdlib>
-#include <ctime>
 
-class RobotomyRequestForm : public AForm {
+class PresidentialPardonForm : public AForm {
 	private:
 		const std::string _target;
 
 	public:
-		RobotomyRequestForm();
-		RobotomyRequestForm(std::string);
-		RobotomyRequestForm(const RobotomyRequestForm&);
-		RobotomyRequestForm& operator=(const RobotomyRequestForm&);
-		~RobotomyRequestForm() override;
+		PresidentialPardonForm();
+		PresidentialPardonForm(std::string);
+		PresidentialPardonForm(const PresidentialPardonForm&);
+		PresidentialPardonForm& operator=(const PresidentialPardonForm&);
+		~PresidentialPardonForm() override;
 
 		void execute(Bureaucrat const& executor) const override;
 		void executeAction() const;

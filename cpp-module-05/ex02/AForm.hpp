@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 22:01:24 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/06/12 18:36:45 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/06/13 17:10:48 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ class AForm {
 	private:
 		const std::string _name;
 		bool _signed;
-		size_t _signGrade;
-		size_t _execGrade;
+		const size_t _signGrade;
+		const size_t _execGrade;
 
 	public:
 		AForm();

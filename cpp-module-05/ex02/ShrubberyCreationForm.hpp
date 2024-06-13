@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 15:39:39 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/06/12 18:36:01 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/06/13 17:06:49 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ class ShrubberyCreationForm : public AForm {
 		~ShrubberyCreationForm() override;
 
 		void execute(Bureaucrat const& executor) const override;
+		void executeAction() const;
 		const std::string getTarget(void) const;
 };

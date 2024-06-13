@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 19:51:51 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/06/12 19:52:13 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/06/13 17:04:15 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ class PresidentialPardonForm : public AForm {
 		~PresidentialPardonForm() override;
 
 		void execute(Bureaucrat const& executor) const override;
+		void executeAction() const;
 		const std::string getTarget(void) const;
 };
