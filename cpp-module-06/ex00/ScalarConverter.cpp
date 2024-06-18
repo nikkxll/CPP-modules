@@ -6,7 +6,8 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 21:39:18 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/06/17 21:39:19 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/06/18 22:19:17 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ScalarConverter.hpp"
