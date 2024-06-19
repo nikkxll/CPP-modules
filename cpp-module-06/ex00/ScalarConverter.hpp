@@ -3,25 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: dnikifor <dnikifor@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/17 21:39:15 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/06/18 22:27:38 by dnikifor         ###   ########.fr       */
+/*   Created: 2024/06/19 12:38:06 by dnikifor          #+#    #+#             */
+/*   Updated: 2024/06/19 15:13:32 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
+#include <iomanip>
 #include <string>
+#include <cstdlib>
+#include <cerrno>
+#include <limits>
+#include <cmath>
+#include <cctype>
 
 class ScalarConverter {
 	private:
-		static void isInteger(std::string&);
-		static void isFloat(std::string&);
-		static void isDouble(std::string&);
-		static void handleFloatPseudoLiterals(std::string&);
-		static void handleDoublePseudoLiterals(std::string&);
+		static bool isChar(const std::string&);
+		static bool isInteger(const std::string&);
+		static bool isFloat(const std::string&);
+		static bool isDouble(const std::string&);
+		static void handleFloatPseudoLiterals(const std::string&);
+		static void handleDoublePseudoLiterals(const std::string&);
 		static void printValues(char, int, float, double);
 
 	public:
@@ -30,5 +37,5 @@ class ScalarConverter {
 		ScalarConverter& operator=(const ScalarConverter&) = delete;
 		~ScalarConverter() = delete;
 
-        static void convert(std::string&);
+		static void convert(const std::string&);
 };

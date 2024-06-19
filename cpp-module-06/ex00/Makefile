@@ -4,7 +4,7 @@ NAME	:= converter
 CC		:= c++
 FLAGS	:= -Wall -Wextra -Werror -Wpedantic -std=c++17
 
-SRCS	:= main.cpp
+SRCS	:= main.cpp ScalarConverter.cpp
 OBJ_DIR	:= objs/
 OBJS	:= $(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))
 
