@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 21:39:15 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/06/29 23:57:35 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/07/26 14:05:46 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,35 @@
 #include <iostream>
 #include <string>
 #include <regex>
+#include <limits>
+#include <iomanip>
+#include <math.h>
+
+struct Handler
+{
+	const char* typeName;
+	std::regex pattern;
+	std::function<void(const std::string&)> func;
+};
 
 class ScalarConverter {
 	private:
-		static bool isInteger(const std::string&);
-		static bool isFloat(const std::string&);
-		static bool isDouble(const std::string&);
-		static bool isChar(const std::string&);
-		static void handleFloatPseudoLiterals(std::string&);
-		static void handleDoublePseudoLiterals(std::string&);
-		static void printValues(char, int, float, double);
-
+		static void printChar(char);
+		static void printInt(int);
+		static void printFloat(float);
+		static void printDouble(double);
+		static void printSpecial(const std::string& special);
+		static void handleChar(const std::string& literal);
+		static void handleInt(const std::string& literal);
+		static void handleFloat(const std::string& literal);
+		static void handleDouble(const std::string& literal);
+		static void handleSpecial(const std::string& literal);
+		
 	public:
 		ScalarConverter() = delete;
 		ScalarConverter(const ScalarConverter&) = delete;
 		ScalarConverter& operator=(const ScalarConverter&) = delete;
 		~ScalarConverter() = delete;
 
-        static void convert(std::string&);
+		static void convert(const std::string&);
 };
