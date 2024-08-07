@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 21:39:15 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/07/26 14:05:46 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/07/26 14:30:23 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ class ScalarConverter {
 		static void handleFloat(const std::string& literal);
 		static void handleDouble(const std::string& literal);
 		static void handleSpecial(const std::string& literal);
+		static void printImpossible();
 		
 	public:
 		ScalarConverter() = delete;

@@ -1,10 +1,10 @@
 # cpp makefile
 
-NAME	:= converter
+NAME	:= serializer
 CC		:= c++
 FLAGS	:= -Wall -Wextra -Werror -Wpedantic -std=c++17
 
-SRCS	:= ScalarConverter.cpp main.cpp
+SRCS	:= Serializer.cpp main.cpp
 OBJ_DIR	:= objs/
 OBJS	:= $(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))
 
