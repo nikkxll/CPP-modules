@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 11:31:25 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/08/07 11:53:58 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/08/07 13:02:58 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 
 int main()
 {
+	// Serializer serializer;
+	
 	Data originalData(42, "Hive Helsinki Coding School");
 
 	std::cout << "originalData address: " << &originalData << std::endl;

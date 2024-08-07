@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Serializer.hpp                                     :+:      :+:    :+:   */
+/*   Base.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/26 14:32:44 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/08/07 13:02:49 by dnikifor         ###   ########.fr       */
+/*   Created: 2024/08/07 11:56:55 by dnikifor          #+#    #+#             */
+/*   Updated: 2024/08/07 12:49:29 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include <cstdint>
-#include "data.h"
+#include <cstdlib>
+#include <ctime>
+#include <iostream>
 
-class Serializer {
-	private:
-
+class Base {
 	public:
-		Serializer() = delete;
-		Serializer(const Serializer&) = delete;
-		Serializer& operator=(const Serializer&) = delete;
-		~Serializer() = delete;
-
-		static Data* deserialize(uintptr_t raw);
-		static uintptr_t serialize(Data* ptr);
+		virtual ~Base();
 };
