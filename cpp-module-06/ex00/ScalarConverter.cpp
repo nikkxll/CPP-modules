@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 21:39:18 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/08/07 16:25:16 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/08/08 20:29:38 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ void ScalarConverter::convert(const std::string& literal)
 {
 	Handler handlers[] =
 	{
-		{"char", std::regex(R"(^'[\x20-\x7E]'$)"), handleChar},
+		{"char", std::regex(R"(^[\x20-\x7E]$)"), handleChar},
 		{"int", std::regex(R"(^[-+]?\d+$)"), handleInt},
 		{"float", std::regex(R"(^[-+]?\d+\.\d+f$)"), handleFloat},
 		{"double", std::regex(R"(^[-+]?\d+\.\d+$)"), handleDouble},
-		{"special", std::regex(R"(^[-+]?inff$|^[-+]?inf$|^nanf?$)"), handleSpecial}
+		{"special", std::regex(R"(^[-+]inff$|^[-+]inf$|^nanf$|^nan$)"), handleSpecial}
 	};
 
 	for (const auto& handler : handlers)
@@ -45,7 +45,7 @@ void ScalarConverter::convert(const std::string& literal)
 
 void ScalarConverter::handleChar(const std::string& literal)
 {
-	char c = literal[1];
+	char c = literal[0];
 	printChar(c);
 	printInt(static_cast<int>(c));
 	printFloat(static_cast<float>(c));
@@ -54,29 +54,60 @@ void ScalarConverter::handleChar(const std::string& literal)
 
 void ScalarConverter::handleInt(const std::string& literal)
 {
-	int i = std::stoi(literal);
-	printChar(static_cast<char>(i));
-	printInt(i);
-	printFloat(static_cast<float>(i));
-	printDouble(static_cast<double>(i));
+	try {
+		int i = std::stoi(literal);
+		if (i >= 0 && i < 128)
+			printChar(static_cast<char>(i));
+		else
+			std::cout << "char: impossible" << std::endl;
+		printInt(i);
+		printFloat(static_cast<float>(i));
+		printDouble(static_cast<double>(i));
+	} catch (const std::out_of_range&) {
+		handleFloat(literal);
+	}
 }
 
 void ScalarConverter::handleFloat(const std::string& literal)
 {
-	float f = std::stof(literal);
-	printChar(static_cast<char>(f));
-	printInt(static_cast<int>(f));
-	printFloat(f);
-	printDouble(static_cast<double>(f));
+	try {
+		float f = std::stof(literal);
+		double d = static_cast<double>(f);
+		if (f >= 0 && f < 128)
+			printChar(static_cast<char>(f));
+		else
+			std::cout << "char: impossible" << std::endl;
+		if (d >= std::numeric_limits<int>::min() && d <= std::numeric_limits<int>::max())
+			printInt(static_cast<int>(f));
+		else
+			std::cout << "int: impossible" << std::endl;
+		printFloat(f);
+		printDouble(static_cast<double>(f));
+	} catch (const std::out_of_range&) {
+		handleDouble(literal);
+	}
 } 
 
 void ScalarConverter::handleDouble(const std::string& literal)
 {
-	double d = std::stod(literal);
-	printChar(static_cast<char>(d));
-	printInt(static_cast<int>(d));
-	printFloat(static_cast<float>(d));
-	printDouble(d);
+	try {
+		double d = std::stod(literal);
+		if (d >= 0 && d < 128)
+			printChar(static_cast<char>(d));
+		else
+			std::cout << "char: impossible" << std::endl;
+		if (d >= std::numeric_limits<int>::min() && d <= std::numeric_limits<int>::max())
+			printInt(static_cast<int>(d));
+		else
+			std::cout << "int: impossible" << std::endl;
+		if (d >= std::numeric_limits<float>::min() && d <= std::numeric_limits<float>::max())
+			printFloat(static_cast<float>(d));
+		else
+			std::cout << "float: impossible" << std::endl;
+		printDouble(d);
+	} catch (const std::out_of_range&) {
+		printImpossible();
+	}
 }
 
 void ScalarConverter::handleSpecial(const std::string& literal)
@@ -126,7 +157,7 @@ void ScalarConverter::printImpossible()
 void ScalarConverter::printChar(char c)
 {
 	if (std::isprint(static_cast<unsigned char>(c)))
-		std::cout << "char: '" << c << "'" << std::endl;
+		std::cout << "char: " << c << std::endl;
 	else
 		std::cout << "char: Non displayable" << std::endl;
 }
