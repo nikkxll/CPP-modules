@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 21:39:18 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/08/08 20:29:38 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/08/08 21:35:31 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void ScalarConverter::handleInt(const std::string& literal)
 {
 	try {
 		int i = std::stoi(literal);
-		if (i >= 0 && i < 128)
+		if (i >= -128 && i <= 127)
 			printChar(static_cast<char>(i));
 		else
 			std::cout << "char: impossible" << std::endl;
@@ -73,7 +73,7 @@ void ScalarConverter::handleFloat(const std::string& literal)
 	try {
 		float f = std::stof(literal);
 		double d = static_cast<double>(f);
-		if (f >= 0 && f < 128)
+		if (f >= -128 && f <= 127)
 			printChar(static_cast<char>(f));
 		else
 			std::cout << "char: impossible" << std::endl;
@@ -92,7 +92,7 @@ void ScalarConverter::handleDouble(const std::string& literal)
 {
 	try {
 		double d = std::stod(literal);
-		if (d >= 0 && d < 128)
+		if (d >= -128 && d <= 127)
 			printChar(static_cast<char>(d));
 		else
 			std::cout << "char: impossible" << std::endl;
