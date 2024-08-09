@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 21:39:18 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/08/08 21:35:31 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/08/09 11:22:45 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void ScalarConverter::handleDouble(const std::string& literal)
 			printInt(static_cast<int>(d));
 		else
 			std::cout << "int: impossible" << std::endl;
-		if (d >= std::numeric_limits<float>::min() && d <= std::numeric_limits<float>::max())
+		if (d >= std::numeric_limits<float>::lowest() && d <= std::numeric_limits<float>::max())
 			printFloat(static_cast<float>(d));
 		else
 			std::cout << "float: impossible" << std::endl;
