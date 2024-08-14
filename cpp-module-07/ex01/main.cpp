@@ -1,33 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   whatever.hpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/08 12:54:53 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/08/13 15:11:36 by dnikifor         ###   ########.fr       */
+/*   Created: 2024/08/07 11:31:25 by dnikifor          #+#    #+#             */
+/*   Updated: 2024/08/14 16:55:05 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "iter.hpp"
 
 template <typename T>
-void swap(T& a, T& b)
+void foo(T& elem)
 {
-	T temp = a;
-	a = b;
-	b = temp;
+	std::cout << elem << " ";
 }
 
 template <typename T>
-const T& min(const T& a, const T& b)
+void foo(const T& elem)
 {
-	return (a < b) ? a : b;
+	std::cout << elem << " ";
 }
 
-template <typename T>
-const T& max(const T& a, const T& b)
+int main()
 {
-	return (a > b) ? a : b;
+	const int arr[] = {1, 2, 3, 4, 5};
+	size_t length = sizeof(arr) / sizeof(arr[0]);
+
+	iter(arr, length, foo<int>);
+
+	std::string strArr[] = {"Hello", "World", "!"};
+	size_t strLength = sizeof(strArr) / sizeof(strArr[0]);
+
+	iter(strArr, strLength, foo<std::string>);
 }

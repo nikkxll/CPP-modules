@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   whatever.hpp                                       :+:      :+:    :+:   */
+/*   iter.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 12:54:53 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/08/13 15:11:36 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/08/14 16:53:06 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
+#include <string>
+#include <iostream>
+
 template <typename T>
-void swap(T& a, T& b)
+void iter(T* arr, const size_t length, void (*foo)(T&))
 {
-	T temp = a;
-	a = b;
-	b = temp;
+	for (size_t i = 0; i < length; ++i)
+		foo(arr[i]);
 }
 
 template <typename T>
-const T& min(const T& a, const T& b)
+void iter(const T* arr, const size_t length, void (*foo)(const T&))
 {
-	return (a < b) ? a : b;
-}
-
-template <typename T>
-const T& max(const T& a, const T& b)
-{
-	return (a > b) ? a : b;
+	for (size_t i = 0; i < length; ++i)
+		foo(arr[i]);
 }

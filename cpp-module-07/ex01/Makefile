@@ -1,6 +1,6 @@
 # cpp makefile
 
-NAME	:= operations
+NAME	:= iter
 CC		:= c++
 FLAGS	:= -Wall -Wextra -Werror -Wpedantic -std=c++17 -I.
 

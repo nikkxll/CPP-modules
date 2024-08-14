@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   whatever.hpp                                       :+:      :+:    :+:   */
+/*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/08 12:54:53 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/08/13 15:11:36 by dnikifor         ###   ########.fr       */
+/*   Created: 2024/08/14 16:51:54 by dnikifor          #+#    #+#             */
+/*   Updated: 2024/08/14 18:29:58 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-template <typename T>
-void swap(T& a, T& b)
-{
-	T temp = a;
-	a = b;
-	b = temp;
-}
+#include <cstddef>
+#include <iostream>
 
 template <typename T>
-const T& min(const T& a, const T& b)
-{
-	return (a < b) ? a : b;
-}
+class Array {
+	private:
+		T*		array;
+		size_t	length;
 
-template <typename T>
-const T& max(const T& a, const T& b)
-{
-	return (a > b) ? a : b;
-}
+	public:
+		Array();
+		Array(unsigned int);
+		Array(const Array&);
+		Array& operator=(const Array&);
+		~Array();
+		T& operator[](size_t index);
+
+		size_t	size() const;
+};
+
+#include "Array.tpp"

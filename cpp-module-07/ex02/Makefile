@@ -1,8 +1,8 @@
 # cpp makefile
 
-NAME	:= operations
+NAME	:= array
 CC		:= c++
-FLAGS	:= -Wall -Wextra -Werror -Wpedantic -std=c++17 -I.
+FLAGS	:= -Wall -Wextra -Werror -Wpedantic -std=c++11 -I.
 
 SRCS	:= main.cpp
 OBJ_DIR	:= objs/
