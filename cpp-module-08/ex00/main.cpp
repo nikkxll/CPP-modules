@@ -1,33 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Array.hpp                                          :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/14 16:51:54 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/08/15 18:13:14 by dnikifor         ###   ########.fr       */
+/*   Created: 2024/08/15 13:21:54 by dnikifor          #+#    #+#             */
+/*   Updated: 2024/08/15 18:20:08 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include <easyfind.hpp>
 
-template <typename T>
-class Array {
-	private:
-		T*		_array;
-		size_t	_length;
+int main(void)
+{
 
-	public:
-		Array();
-		Array(unsigned int);
-		Array(const Array<T>&);
-		Array<T>& operator=(const Array<T>&);
-		~Array();
-		T& operator[](size_t);
-		const T& operator[](size_t) const;
-
-		size_t	size() const;
-};
-
-#include "Array.tpp"
+}
