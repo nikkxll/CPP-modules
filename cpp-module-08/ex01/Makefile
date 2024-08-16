@@ -1,6 +1,6 @@
 # cpp makefile
 
-NAME	:= easyfind
+NAME	:= span
 CC		:= c++
 FLAGS	:= -Wall -Wextra -Werror -Wpedantic -std=c++17 -I.
 
