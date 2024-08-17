@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 11:46:41 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/08/16 12:29:51 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/08/17 12:54:38 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,20 @@ Span& Span::operator=(const Span &other)
 
 Span::~Span() {}
 
-int Span::shortestSpan()
+long Span::shortestSpan()
 {
 	if (_set.size() < 2)
 	{
 		throw std::runtime_error("Not enough elements to calculate a span");
 	}
 	
-	int minSpan = std::numeric_limits<int>::max();
+	long minSpan = std::numeric_limits<int>::max();
 	std::set<int>::const_iterator prev = _set.begin();
 	std::set<int>::const_iterator curr = ++_set.begin();
 
 	while (curr != _set.end())
 	{
-		int currSpan = *curr - *prev;
+		long currSpan = static_cast<long>(*curr) - static_cast<long>(*prev);
 		if (currSpan < minSpan)
 			minSpan = currSpan;
 		prev = curr;
@@ -60,17 +60,21 @@ void Span::addNumber(int number)
 	_set.insert(number);
 }
 
-int Span::longestSpan()
+long Span::longestSpan()
 {
 	if (_set.size() < 2)
 	{
 		throw std::runtime_error("Not enough elements to calculate a span");
 	}
-
-	return *(_set.end()) - *(_set.begin());
+	return static_cast<long>(*(_set.rbegin())) - static_cast<long>(*(_set.begin()));
 }
 
 std::set<int>& Span::getSet()
 {
 	return _set;
+}
+
+unsigned int Span::getLimit()
+{
+	return _limit;
 }

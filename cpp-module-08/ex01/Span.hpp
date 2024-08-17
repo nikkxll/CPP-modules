@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 11:46:44 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/08/16 12:21:10 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/08/17 12:51:47 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <set>
 #include <limits>
 #include <stdexcept>
+#include <iostream>
 
 class Span {
 	private:
@@ -28,9 +29,15 @@ class Span {
 		Span& operator=(const Span &);
 		~Span();
 
-		int				shortestSpan();
-		int				longestSpan();
+		long			shortestSpan();
+		long			longestSpan();
 		void			addNumber(int);
+		
+		template <typename InputIterator>
+		void			addNumbers(InputIterator begin, InputIterator end);
 
 		std::set<int>&	getSet();
+		unsigned int	getLimit();
 };
+
+#include <Span.tpp>
