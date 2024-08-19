@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 11:46:41 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/08/17 12:54:38 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/08/19 14:32:32 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,16 @@ Span::~Span() {}
 
 long Span::shortestSpan()
 {
+	if (_isEven == true)
+	{
+		return 0;
+	}
+
 	if (_set.size() < 2)
 	{
 		throw std::runtime_error("Not enough elements to calculate a span");
 	}
-	
+
 	long minSpan = std::numeric_limits<int>::max();
 	std::set<int>::const_iterator prev = _set.begin();
 	std::set<int>::const_iterator curr = ++_set.begin();
@@ -55,14 +60,18 @@ void Span::addNumber(int number)
 {
 	if (_set.size() == _limit)
 	{
-		throw std::runtime_error("Set is already full");
+		throw std::out_of_range("Adding this range would exceed set's capacity");
+	}
+	if (_set.find(number) != _set.end())
+	{
+		_isEven = true;
 	}
 	_set.insert(number);
 }
 
 long Span::longestSpan()
 {
-	if (_set.size() < 2)
+	if (_set.size() < 1)
 	{
 		throw std::runtime_error("Not enough elements to calculate a span");
 	}
