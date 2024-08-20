@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 11:46:44 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/08/19 13:02:22 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/08/20 12:16:32 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ class Span {
 		void			addNumbers(InputIterator begin, InputIterator end)
 		{
 			std::vector<int> tempContainer;
+			
+			if (std::distance(begin, end) + _set.size() > _limit)
+				throw std::out_of_range("Adding this range would exceed set's capacity");
 
 			tempContainer.insert(tempContainer.end(), _set.begin(), _set.end());
 			tempContainer.insert(tempContainer.end(), begin, end);
@@ -46,9 +49,6 @@ class Span {
 
 			if (std::unique(tempContainer.begin(), tempContainer.end()) != tempContainer.end())
 				_isEven = true;
-				
-			if (std::distance(begin, end) + _set.size() > _limit)
-				throw std::out_of_range("Adding this range would exceed set's capacity");
 
 			_set.insert(begin, end);
 		}
