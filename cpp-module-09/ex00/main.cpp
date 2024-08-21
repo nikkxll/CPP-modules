@@ -6,19 +6,18 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 13:21:54 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/08/20 12:13:29 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/08/21 14:41:45 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <BitcoinExchange.hpp>
 
-int main(void)
+int main(int argc, char *argv[])
 {
-    try {
-        BitcoinExchange::csvReader("data.csv");
-         for (const auto& entry : BitcoinExchange::_bitcoinPrices)
-             std::cout << "Date: " << entry.first << ", Price: " << entry.second << std::endl;
-    } catch (std::exception& e) {
-        std::cout << e.what() << std::endl;
-    }
+	if (argc != 2)
+	{
+		std::cout << "Wrong amount of arguments" << std::endl;
+		return EXIT_FAILURE;
+	}
+	BitcoinExchange::run(argv[1]);
 }

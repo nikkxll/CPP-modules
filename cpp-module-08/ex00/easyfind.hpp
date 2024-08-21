@@ -6,13 +6,14 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 16:51:54 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/08/16 11:46:58 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/08/19 14:56:43 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <algorithm>
+#include <stdexcept>
 
 template <typename T>
 typename T::iterator easyfind(T& container, int value)
