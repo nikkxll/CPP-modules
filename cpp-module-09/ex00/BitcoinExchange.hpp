@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 23:52:39 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/08/21 19:29:46 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/08/22 14:57:51 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,11 @@ class BitcoinExchange {
 		static void processLine(const std::string& line, const std::regex& pipePattern);
 		static bool isValidAndFormattedDate(const std::string& dateStr, std::string& foundDate);
 		static bool isValidAmount(const std::string& numberStr, double& amount);
+
+		BitcoinExchange() = delete;
+		BitcoinExchange(const BitcoinExchange &) = delete;
+		BitcoinExchange& operator=(const BitcoinExchange &) = delete;
+		~BitcoinExchange() = delete;
 
 	public:
 		static void run(char *initFilePath);
