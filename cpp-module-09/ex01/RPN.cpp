@@ -6,20 +6,20 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 14:53:02 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/08/22 17:13:47 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/08/22 20:27:31 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <RPN.hpp>
 
-std::stack<int>	RPN::_stack;
+std::stack<float>	RPN::_stack;
 
 bool RPN::isOperation(char c)
 {
 	return (c == '+' || c == '-' || c == '*' || c == '/');
 }
 
-int RPN::executeOperation(int a, int b, char c)
+float RPN::executeOperation(float a, float b, char c)
 {
 	if (c == '+') return b + a;
 	else if (c == '-') return b - a;
@@ -42,9 +42,9 @@ void RPN::execute(char *arg)
 		else if (isOperation(it)) {
 			if (_stack.size() < 2) throw std::runtime_error("Error");
 			digit_flag = false;
-			int a = _stack.top();
+			float a = _stack.top();
 			_stack.pop();
-			int b = _stack.top();
+			float b = _stack.top();
 			_stack.pop();
 			_stack.push(executeOperation(a, b, it));
 		}
