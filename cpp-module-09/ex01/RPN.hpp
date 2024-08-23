@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 14:52:56 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/08/22 20:27:38 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/08/23 11:14:09 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ class RPN {
 		static std::stack<float>	_stack;
 		static bool					isOperation(char c);
 		static float				executeOperation(float a, float b, char c);
+		static void					processOperation(bool& digit_flag, char c);
+		static void					pushNumber(bool& digit_flag, char c);
 
 		RPN() = delete;
 		RPN(const RPN &) = delete;
