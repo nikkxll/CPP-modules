@@ -6,14 +6,13 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 14:52:56 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/08/23 11:14:09 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/08/24 14:26:08 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <string>
-#include <iostream> 
 #include <stack>
 #include <stdexcept>
 
