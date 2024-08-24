@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 14:25:15 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/08/24 18:18:27 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/08/24 23:50:18 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 
 class PmergeMe {
     private:
-		static int _jacob;
         static std::vector<int> _vectorA;
         static std::vector<int> _vectorB;
 		static double _vector_struggler;
@@ -36,4 +35,6 @@ class PmergeMe {
 		static void createVectors(std::vector<int>& fullVector);
 		static int getJacobsthal(int n);
 		static void insertionSortVectors(std::vector<int>& vectorA, std::vector<int>& vectorB);
+		static void mergeInsertionVectors(std::vector<int>& vectorA, const std::vector<int>& vectorB);
+		static void insertElement(std::vector<int>& vectorA, int element);
 };
