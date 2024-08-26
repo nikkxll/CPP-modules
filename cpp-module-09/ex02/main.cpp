@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 13:21:54 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/08/26 09:58:36 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/08/26 15:58:49 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 int main(int argc, char *argv[])
 {
-    PmergeMe::runVector(argc, argv);
+	PmergeMe::execute(argc, argv);
 }
