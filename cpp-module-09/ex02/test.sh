@@ -8,7 +8,7 @@ do
     # args=$(shuf -i 1-$max_range -n $num_elements | tr "\n" " ")
 
 #macOS
-    max_range=$(jot -r 1 1 100000)
+    max_range=$(jot -r 1 1 2147483647)
     num_elements=10
     args=$(jot -r $num_elements 1 $max_range | tr "\n" " ")
 

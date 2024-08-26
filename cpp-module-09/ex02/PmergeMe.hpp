@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 14:25:15 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/08/25 23:10:34 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/08/26 10:54:50 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ class PmergeMe {
 		static int getJacobsthal(int n);
 		static void insertionSortVectors(vector& vectorA, vector& vectorB);
 		static void mergeInsertionVectors(vector& vectorA, const vector& vectorB, vector& _indexConnections);
-		static void insertElement(vector& vectorA, int element, int end);
-		static int calculateBinarySearchRange(vector& vectorA, int index);
+		inline static void insertElement(vector& vectorA, int element, int end);
+		// static int calculateBinarySearchRange(vector& vectorA, int index);
+		inline static void calculateBinarySearchRange(vector& vectorA, int index);
 };
