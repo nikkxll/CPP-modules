@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 14:25:15 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/08/26 16:55:50 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/08/26 17:45:18 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include <string>
 #include <vector>
-#include <list>
+#include <deque>
 #include <iostream>
 #include <cmath>
 #include <algorithm>
@@ -23,30 +23,49 @@
 #include <iomanip>
 
 using vector = std::vector<int>;
+using deque = std::deque<int>;
 
 class PmergeMe {
 	private:
-		static vector _vectorA;
-		static vector _vectorB;
-		static vector _indexConnections;
-		static double _vector_struggler;
-
+		static void readArgv(int argc, char *argv[], vector& temp);
+		static void print(char *argv[], double firstInterval, double secondInterval);
+		static void runSort(vector& fullVector, char *argv[]);
+		static int getJacobsthal(int n);
+		
 		PmergeMe() = delete;
 		PmergeMe(const PmergeMe &) = delete;
 		PmergeMe& operator=(const PmergeMe &) = delete;
 		~PmergeMe() = delete;
-	public:
-		static void execute(int argc, char *argv[]);
-		static void readArgv(int argc, char *argv[], vector& temp);
-		static void print(vector& fullVector, double firstInterval, double secondInterval);
 		
-		static void runSort(vector& fullVector);
+		/*
+		std::vector
+		*/
+		static vector _vectorA;
+		static vector _vectorB;
+		static vector _vectorIndexConnections;
+		static double _vector_struggler;
+		
 		static void initVectors(vector& fullVector);
-		static int getJacobsthal(int n);
 		static void insertionSortVectors();
 		static void mergeInsertionSortVectors();
 		inline static void insertElementVector(int element, int end);
-		inline static void incrementIndexesVector(vector& vectorA, int index);
+		inline static void incrementIndexesVector(int index);
 
-		// static void check(int argc);
+		/*
+		std::deque
+		*/
+		static deque _dequeA;
+		static deque _dequeB;
+		static deque _dequeIndexConnections;
+		static double _deque_struggler;
+
+		static void initDeques(vector& fullVector);
+		static void insertionSortDeques();
+		static void mergeInsertionSortDeques();
+		inline static void insertElementDeque(int element, int end);
+		inline static void incrementIndexesDeque(int index);
+	public:
+		static void execute(int argc, char *argv[]);
+
+		static void check(int argc);
 };
