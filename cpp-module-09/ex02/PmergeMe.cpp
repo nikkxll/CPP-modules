@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 14:25:18 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/08/26 17:46:21 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/08/26 23:08:07 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,55 +14,25 @@
 
 vector PmergeMe::_vectorA;
 vector PmergeMe::_vectorB;
-vector PmergeMe::_vectorIndexConnections;
-double PmergeMe::_vector_struggler = std::numeric_limits<double>::lowest();
-
 deque PmergeMe::_dequeA;
 deque PmergeMe::_dequeB;
+vector PmergeMe::_vectorIndexConnections;
 deque PmergeMe::_dequeIndexConnections;
+double PmergeMe::_vector_struggler = std::numeric_limits<double>::lowest();
 double PmergeMe::_deque_struggler = std::numeric_limits<double>::lowest();
 
-void PmergeMe::check(int argc)
-{
-		std::cout << _vectorA.size() << std::endl;
-	if (static_cast<int>(_vectorA.size()) != argc - 1)
-	{
-		std::cout << "fail" << std::endl;
-		throw std::runtime_error("Argument is out of the limits");
-	}
-	std::cout << _vectorA[0] << std::endl;
-	for (size_t i = 1; i < _vectorA.size(); ++i) {
-		std::cout << _vectorA[i] << std::endl;
-		if (_vectorA[i - 1] > _vectorA[i]) {
-			std::cout << "fail" << std::endl;
-			throw std::runtime_error("Argument is out of the limits");
-		}
-	}
-
-	// if (static_cast<int>(_dequeA.size()) != argc - 1)
-	// {
-	// 	std::cout << "fail" << std::endl;
-	// 	throw std::runtime_error("Argument is out of the limits");
-	// }
-	std::cout << _dequeA[0] << std::endl;
-	for (size_t i = 1; i < _dequeA.size(); ++i) {
-		std::cout << _dequeA[i] << std::endl;
-		if (_dequeA[i - 1] > _dequeA[i]) {
-			std::cout << "fail" << std::endl;
-			throw std::runtime_error("Argument is out of the limits");
-		}
-	}
-}
-
+/*
+Common methods
+*/
 void PmergeMe::execute(int argc, char *argv[])
 {
+	vector initArgsStorageForVector;
+	vector initArgsStorageForDeque;
+	
 	try {
-		vector temp;
-
-		readArgv(argc, argv, temp);
-		runSort(temp, argv);
-		check(argc);
-		
+		readArgv(argc, argv, initArgsStorageForVector);
+		initArgsStorageForDeque = initArgsStorageForVector;
+		runSort(initArgsStorageForVector, initArgsStorageForDeque, argv);
 	} catch (std::runtime_error& e) {
 		std::cerr << e.what() << std::endl;
 	}
@@ -78,7 +48,26 @@ void PmergeMe::readArgv(int argc, char *argv[], vector& temp)
 	}
 }
 
-void PmergeMe::print(char *argv[], double firstInterval, double secondInterval)
+void PmergeMe::runSort(vector& initArgsStorageForVector, vector& initArgsStorageForDeque, char *argv[])
+{
+	auto vecSortStart = std::chrono::high_resolution_clock::now();
+	initVectors(initArgsStorageForVector);
+	insertionSortVectors();
+	mergeInsertionSortVectors();
+	auto vecSortEnd = std::chrono::high_resolution_clock::now();
+	double vecDuration = std::chrono::duration_cast<std::chrono::nanoseconds>(vecSortEnd - vecSortStart).count() / 1000.0;
+	
+	auto deqSortStart = std::chrono::high_resolution_clock::now();
+	initDeques(initArgsStorageForDeque);
+	insertionSortDeques();
+	mergeInsertionSortDeques();
+	auto deqSortEnd = std::chrono::high_resolution_clock::now();
+	double deqDuration = std::chrono::duration_cast<std::chrono::nanoseconds>(deqSortEnd - deqSortStart).count() / 1000.0;
+	
+	print(argv, vecDuration, deqDuration);
+}
+
+void PmergeMe::print(char *argv[], double vecDuration, double deqDuration)
 {
 	std::cout << "Before: ";
 	for (size_t i = 1; argv[i] != NULL; ++i)
@@ -89,28 +78,9 @@ void PmergeMe::print(char *argv[], double firstInterval, double secondInterval)
 		std::cout << _vectorA[i] << " ";
 	std::cout << std::endl;
 	std::cout << "Time to process a range of " << _vectorA.size() << " elements with std::vector : ";
-	std::cout << firstInterval << " us" << std::endl;
+	std::cout << vecDuration << " us" << std::endl;
 	std::cout << "Time to process a range of " << _dequeA.size() << " elements with std::deque : ";
-	std::cout << secondInterval << " us" << std::endl;
-}
-
-void PmergeMe::runSort(vector& fullVector, char *argv[])
-{
-	auto vecSortStart = std::chrono::high_resolution_clock::now();
-	initVectors(fullVector);
-	insertionSortVectors();
-	mergeInsertionSortVectors();
-	auto vecSortEnd = std::chrono::high_resolution_clock::now();
-	double vecDuration = std::chrono::duration_cast<std::chrono::nanoseconds>(vecSortEnd - vecSortStart).count() / 1000.0;
-	
-	auto deqSortStart = std::chrono::high_resolution_clock::now();
-	initDeques(fullVector);
-	insertionSortDeques();
-	mergeInsertionSortDeques();
-	auto deqSortEnd = std::chrono::high_resolution_clock::now();
-	double deqDuration = std::chrono::duration_cast<std::chrono::nanoseconds>(deqSortEnd - deqSortStart).count() / 1000.0;
-	
-	print(argv, vecDuration, deqDuration);
+	std::cout << deqDuration << " us" << std::endl;
 }
 
 int PmergeMe::getJacobsthal(int n)
@@ -258,7 +228,7 @@ void PmergeMe::insertionSortDeques()
 inline void PmergeMe::insertElementDeque(int element, int end)
 {
 	auto insertion_point = std::upper_bound(_dequeA.begin(), _dequeA.begin() + end, element);
-	incrementIndexesVector(insertion_point - _dequeA.begin());
+	incrementIndexesDeque(insertion_point - _dequeA.begin());
 	_dequeA.insert(insertion_point, element);
 }
 
@@ -276,23 +246,23 @@ void PmergeMe::mergeInsertionSortDeques()
 	int lastJacobIndex = 1;
 	bool shiftingFlag = false;
 
-	if (!(_dequeB.empty())) insertElementVector(_dequeB[0], _dequeIndexConnections[0]);
+	if (!(_dequeB.empty())) insertElementDeque(_dequeB[0], _dequeIndexConnections[0]);
 	for (int i = 1; i <= size; ++i) {
 		int jacobIndex = getJacobsthal(lastJacobIndex + 1) - 1;
 		if (jacobIndex >= size) break;
 		
-		insertElementVector(_dequeB[jacobIndex],_dequeIndexConnections[jacobIndex]);
+		insertElementDeque(_dequeB[jacobIndex],_dequeIndexConnections[jacobIndex]);
 		int processRemain = shiftingFlag ? lastJacobIndex + 1 : lastJacobIndex;
 		for (int j = jacobIndex - 1; j >= processRemain; --j)
-			insertElementVector(_dequeB[j], _dequeIndexConnections[j]);
+			insertElementDeque(_dequeB[j], _dequeIndexConnections[j]);
 		lastJacobIndex = jacobIndex;
 		shiftingFlag = true;
 	}
 
 	int finalize = shiftingFlag ? lastJacobIndex + 1 : lastJacobIndex;
 	for (int i = finalize; i < size; ++i)
-		insertElementVector(_dequeB[i], _dequeIndexConnections[i]);
+		insertElementDeque(_dequeB[i], _dequeIndexConnections[i]);
 
 	if (_deque_struggler != std::numeric_limits<double>::lowest())
-		insertElementVector(_deque_struggler, _dequeA.size());
+		insertElementDeque(_deque_struggler, _dequeA.size());
 }
