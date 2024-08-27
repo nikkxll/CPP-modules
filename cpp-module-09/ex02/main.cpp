@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 13:21:54 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/08/26 15:58:49 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/08/27 13:35:37 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,8 @@
 
 int main(int argc, char *argv[])
 {
-	PmergeMe::execute(argc, argv);
+	if (argc < 2)
+		std::cerr << "No arguments provided"<< std::endl;
+	else
+		PmergeMe::execute(argc, argv);
 }
