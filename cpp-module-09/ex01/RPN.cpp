@@ -6,11 +6,12 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 14:53:02 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/08/23 11:15:16 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/08/27 12:59:33 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <RPN.hpp>
+#include <iostream>
 
 std::stack<float>	RPN::_stack;
 

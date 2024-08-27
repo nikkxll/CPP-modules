@@ -6,11 +6,12 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 14:25:18 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/08/26 23:08:07 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/08/27 13:15:30 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <PmergeMe.hpp>
+#include <iostream>
 
 vector PmergeMe::_vectorA;
 vector PmergeMe::_vectorB;
@@ -34,7 +35,9 @@ void PmergeMe::execute(int argc, char *argv[])
 		initArgsStorageForDeque = initArgsStorageForVector;
 		runSort(initArgsStorageForVector, initArgsStorageForDeque, argv);
 	} catch (std::runtime_error& e) {
-		std::cerr << e.what() << std::endl;
+		std::cerr << "Runtime error occured: " << e.what() << std::endl;
+	} catch (std::exception& e) {
+		std::cerr << "Error occured: " << e.what() << std::endl;
 	}
 }
 
@@ -77,6 +80,7 @@ void PmergeMe::print(char *argv[], double vecDuration, double deqDuration)
 	for (size_t i = 0; i < _vectorA.size(); ++i)
 		std::cout << _vectorA[i] << " ";
 	std::cout << std::endl;
+	std::cout << std::fixed << std::setprecision(3) << std::endl;
 	std::cout << "Time to process a range of " << _vectorA.size() << " elements with std::vector : ";
 	std::cout << vecDuration << " us" << std::endl;
 	std::cout << "Time to process a range of " << _dequeA.size() << " elements with std::deque : ";

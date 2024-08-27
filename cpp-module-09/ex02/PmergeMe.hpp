@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 14:25:15 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/08/26 23:06:21 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/08/27 12:59:24 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include <string>
 #include <vector>
 #include <deque>
-#include <iostream>
 #include <cmath>
 #include <algorithm>
 #include <iterator>

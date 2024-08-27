@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 11:19:08 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/08/21 19:34:01 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/08/27 12:51:28 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ void BitcoinExchange::databaseReader(const std::string& filePath)
 			}
 		}
 	}
+	if (_bitcoinPrices.empty()) throw std::runtime_error("Error: empty database");
 }
 
 void BitcoinExchange::calculation(std::string& date, double amount)
