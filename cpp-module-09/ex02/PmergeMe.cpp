@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 14:25:18 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/08/27 13:15:30 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/08/27 18:18:37 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void PmergeMe::print(char *argv[], double vecDuration, double deqDuration)
 	for (size_t i = 0; i < _vectorA.size(); ++i)
 		std::cout << _vectorA[i] << " ";
 	std::cout << std::endl;
-	std::cout << std::fixed << std::setprecision(3) << std::endl;
+	std::cout << std::fixed << std::setprecision(3);
 	std::cout << "Time to process a range of " << _vectorA.size() << " elements with std::vector : ";
 	std::cout << vecDuration << " us" << std::endl;
 	std::cout << "Time to process a range of " << _dequeA.size() << " elements with std::deque : ";

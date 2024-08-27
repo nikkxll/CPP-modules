@@ -6,7 +6,7 @@
 /*   By: dnikifor <dnikifor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 11:19:08 by dnikifor          #+#    #+#             */
-/*   Updated: 2024/08/27 12:51:28 by dnikifor         ###   ########.fr       */
+/*   Updated: 2024/08/27 19:49:56 by dnikifor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,18 +168,38 @@ bool BitcoinExchange::isValidAndFormattedDate(const std::string& dateStr, std::s
 			std::cout << "Error: bad date => " << foundDate << std::endl;
 		}
 	} else {
-		std::cout << "Error: invalid format" << std::endl;
+		std::cout << "Error: invalid date" << std::endl;
 	}
 
 	return false;
 }
 
+bool BitcoinExchange::isValidNumber(const std::string& str)
+{
+	bool hasDot = false;
+
+	for (char c : str) {
+		if (c == '.') {
+			if (hasDot) return false;
+			hasDot = true;
+		} else if (!isdigit(c))
+			return false;
+	}
+
+	return true;
+}
+
 bool BitcoinExchange::isValidAmount(const std::string& numberStr, double& amount)
 {
 	try {
+		if (!(isValidNumber(numberStr)))
+		{
+			std::cout << "Error: non digit found "<< std::endl;
+			return false;
+		}
 		amount = std::stod(numberStr);
 	} catch (std::exception& e) {
-		std::cout << "Error: too large a number." << std::endl;
+		std::cout << "Error: number error: " << e.what() << std::endl;
 		return false;
 	}
 
